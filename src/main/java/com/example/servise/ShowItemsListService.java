@@ -18,10 +18,13 @@ public class ShowItemsListService {
 	@Autowired
 	private ItemsRepository repisitory;
 
-	public List<Items> findAll(){
+	public List<Items> showItemList(){
 		
 		List<Items> ItemsList = repisitory.findAll();
 		
 		return ItemsList;
+	}
+	public List<Items> paging( int offset) {
+		return repisitory.paging(offset);
 	}
 }

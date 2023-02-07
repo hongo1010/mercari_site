@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.Category;
 import com.example.domain.Items;
+import com.example.domain.RecordNum;
 
 /**
  * @author hongo
@@ -36,6 +39,8 @@ public class ItemsRepository {
 		return items;
 		
 	};
+	//RecordNumクラスのRowMapper
+	private static final RowMapper<RecordNum> RECORDNUM_ROW_MAPPER = new BeanPropertyRowMapper<>(RecordNum.class);
 	
 	//CategoryクラスのRowMapper
 	private static final RowMapper<Category>CATEGORY_ROW_MAPPER = new BeanPropertyRowMapper<>(Category.class);	
@@ -50,8 +55,22 @@ public class ItemsRepository {
 		List<Items> itemsList = template.query(sql,ITEMS_ROW_MAPPER);
 		
 		return itemsList;
+		
+	}
+	public List<Items> paging(Integer offset){
+		String sql ="SELECT i.name as i_name,i.condition as i_condition,i.price as i_price, c.name_all as c_name_all, i.brand as i_brand ,(SELECT COUNT(*) as record_count FROM Items)FROM Items as i INNER JOIN category AS c ON i.category = c.id c.id ORDER BY category LIMIT30 OFFSET :offset ";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("offset", offset);
+		List<Items> itemsList = template.query(sql, param,ITEMS_ROW_MAPPER);
+		
+		return itemsList;
+		
 	}
 	
+	public Integer recordNum() {
+		String sql = "SELECT COUNT(id) AS record_num FROM items;";
+		List<RecordNum> recordNumlist = template.query(sql, RECORDNUM_ROW_MAPPER);
+		return recordNumlist.get(0).getRecordNum();
+	}	
 	
 	
 }
