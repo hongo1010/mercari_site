@@ -13,6 +13,8 @@ import com.example.domain.Items;
 import com.example.repository.ItemsRepository;
 import com.example.servise.ShowItemsListService;
 
+import jakarta.servlet.http.HttpSession;
+
 /**
  * 商品一覧画面の操作を行うControllerクラス.
  * 
@@ -29,6 +31,8 @@ public class ShowItemsListController {
 	@Autowired
 	private ItemsRepository repisitory;
 
+	@Autowired
+	private HttpSession session;
 	// １ページの最大表示数
 	public static final int OUTPUT_NUM = 100;
 
@@ -79,6 +83,9 @@ public class ShowItemsListController {
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);
+
+		session.setAttribute("currentPage", currentPage);
+
 		return "list";
 	}
 
@@ -93,7 +100,7 @@ public class ShowItemsListController {
 	public String selectPage(Integer page, Model model) {
 
 		// もし入力したページ数が0以下、もしくは最大ページ数より大きかった場合、ページを１に設定し表示する。
-		if (page < 0 || page > maxPage) {
+		if (page < 0 || page > maxPage || page == null) {
 			page = 0;
 		}
 
@@ -105,7 +112,29 @@ public class ShowItemsListController {
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);
+		session.setAttribute("currentPage", currentPage);
 		return "list";
 	}
 
+	/**
+	 * 商品詳細画面からBackした際のメソッド.
+	 * 
+	 * @param num1
+	 * @param model
+	 * @return 商品一覧画面
+	 */
+	@GetMapping("/Back")
+	public String backPage(Model model) {
+		session.getAttribute("currentPage");
+
+		int offset = OUTPUT_NUM * currentPage;
+
+		List<Items> itemsList = service.showItemList(offset);
+
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("itemsList", itemsList);
+		session.setAttribute("currentPage", currentPage);
+		return "list";
+	}
 }
