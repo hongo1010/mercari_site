@@ -93,6 +93,13 @@ public class ShowItemsListController {
 		return "list";
 	}
 
+	/**
+	 * ページ番号を指定して表示するフォームを操作するメソッド.
+	 * 
+	 * @param page
+	 * @param model
+	 * @return 賞品一覧画面
+	 */
 	@PostMapping("/selectpage")
 	public String selectPage(Integer page, Model model) {
 
@@ -104,7 +111,7 @@ public class ShowItemsListController {
 		currentPage = page;
 		int offset = OUTPUT_NUM * currentPage;
 		List<Items> itemsList = service.paging(offset);
-		System.out.println(itemsList);
+
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);

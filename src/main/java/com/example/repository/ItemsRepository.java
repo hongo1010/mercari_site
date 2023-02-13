@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import com.example.domain.Category;
 import com.example.domain.Items;
 import com.example.domain.RecordNum;
 
@@ -72,6 +71,7 @@ public class ItemsRepository {
 
 	/**
 	 * 商品一覧の商品の総数を取ってくるメソッド.
+	 * 
 	 * @return 商品の総数
 	 */
 	public Integer recordNum() {

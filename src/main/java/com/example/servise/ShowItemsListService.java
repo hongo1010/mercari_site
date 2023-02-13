@@ -10,6 +10,7 @@ import com.example.repository.ItemsRepository;
 
 /**
  * 商品一覧の表示、検索を行うserviceクラス.
+ * 
  * @author hongo
  *
  */
@@ -18,15 +19,25 @@ public class ShowItemsListService {
 	@Autowired
 	private ItemsRepository repisitory;
 
-	public List<Items> showItemList(){
-		
+	/**
+	 * 商品一覧を画面を表示した際に出てくる商品一覧の情報を検索するメソッド.
+	 * 
+	 * @return 商品一覧
+	 */
+	public List<Items> showItemList() {
+
 		List<Items> ItemsList = repisitory.findAll();
-		
+
 		return ItemsList;
 	}
-	
-	
-	public List<Items> paging( int offset) {
+
+	/**
+	 * ページ移動した際や、ページから情報を検索する際に使用されるメソッド.
+	 * 
+	 * @param offset
+	 * @return ページングで使用される商品一覧のデータ
+	 */
+	public List<Items> paging(int offset) {
 		return repisitory.paging(offset);
 	}
 }
