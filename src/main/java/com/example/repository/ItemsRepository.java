@@ -75,7 +75,7 @@ public class ItemsRepository {
 	 * @return 商品の総数
 	 */
 	public Integer recordNum() {
-		String sql = "SELECT COUNT(id) AS record_num FROM items;";
+		String sql = "SELECT COUNT(category) AS record_num FROM items;";
 		List<RecordNum> recordNumlist = template.query(sql, RECORDNUM_ROW_MAPPER);
 		return recordNumlist.get(0).getRecordNum();
 	}

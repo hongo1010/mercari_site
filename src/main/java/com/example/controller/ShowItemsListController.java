@@ -52,6 +52,7 @@ public class ShowItemsListController {
 		recordNum = repisitory.recordNum();
 		maxPage = recordNum / OUTPUT_NUM;
 		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("currentPage", currentPage);
 		List<Items> itemsList = service.showItemList();
 
 		model.addAttribute("itemsList", itemsList);
@@ -76,10 +77,8 @@ public class ShowItemsListController {
 			return "redirect:/ShowItemsList/";
 		}
 		int offset = OUTPUT_NUM * currentPage;
-		
 
 		List<Items> itemsList = service.paging(offset);
-		
 
 		// 最後のページ以降に行こうとすると直前のページに戻るようにするif文
 		if (itemsList == null) {
@@ -89,17 +88,25 @@ public class ShowItemsListController {
 
 		}
 		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);
 		return "list";
 	}
 
 	@PostMapping("/selectpage")
 	public String selectPage(Integer page, Model model) {
+
+		// もし入力したページ数が0以下、もしくは最大ページ数より大きかった場合、ページを１に設定し表示する。
+		if (page < 0 || page > maxPage) {
+			page = 0;
+		}
 		currentPage = 0;
-		currentPage = page - 1;
+		currentPage = page;
 		int offset = OUTPUT_NUM * currentPage;
 		List<Items> itemsList = service.paging(offset);
+		System.out.println(itemsList);
 		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);
 		return "list";
 	}

@@ -92,10 +92,10 @@
     <div class="pages">
         <nav class="page-nav">
           <ul class="pager">
-            <li class="previous">
+            <li class="previous" th:if="${currentPage >= 1 }">
               <a th:href="@{/ShowItemsList/next?page=} + ${-1}">&larr; prev</a>
             </li>
-            <li class="next">
+            <li class="next" th:if="${currentPage < maxPage }">
               <a th:href="@{/ShowItemsList/next?page=} + ${1}">next &rarr;</a></li>
         </ul>
       </nav>
@@ -136,8 +136,8 @@
     <div class="pages">
       <nav class="page-nav">
         <ul class="pager">
-          <li class="previous"><a th:href="@{/ShowItemsList/next?page=} + ${-1}">&larr; prev</a></li>
-          <li class="next"> <a th:href="@{/ShowItemsList/next?page=} + ${1}">next &rarr;</a></li>
+          <li class="previous" th:if="${currentPage >= 1 }"><a th:href="@{/ShowItemsList/next?page=} + ${-1}">&larr; prev</a></li>
+          <li class="next" th:if="${currentPage < maxPage }"> <a th:href="@{/ShowItemsList/next?page=} + ${1}">next &rarr;</a></li>
         </ul>
       </nav>
       <!-- ページ番号を指定して表示するフォーム -->
