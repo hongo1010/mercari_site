@@ -30,7 +30,7 @@ public class ShowItemsListController {
 	private ItemsRepository repisitory;
 
 	// １ページの最大表示数
-	public static final int OUTPUT_NUM = 30;
+	public static final int OUTPUT_NUM = 100;
 
 	// itemsテーブルのレコード総数
 	private int recordNum;
@@ -67,38 +67,40 @@ public class ShowItemsListController {
 	 * @return 商品一覧画面
 	 */
 	@GetMapping("/next")
-	public String turnPage(Integer num1, Model model) {
-		currentPage += num1;
+	public String turnPage(Integer page, Model model) {
+		currentPage += page;
 
 		// 1ページよりも前に戻ろうとすると１ページ目に遷移するようにしているif文
 		if (currentPage <= 0) {
 			currentPage = 0;
-			return "redirect:/list";
+			return "redirect:/ShowItemsList/";
 		}
 		int offset = OUTPUT_NUM * currentPage;
+		
 
-		List<Items> itemList = service.paging(offset);
+		List<Items> itemsList = service.paging(offset);
+		
 
 		// 最後のページ以降に行こうとすると直前のページに戻るようにするif文
-		if (itemList == null) {
+		if (itemsList == null) {
 			currentPage -= 1;
 			offset = OUTPUT_NUM * currentPage;
-			itemList = service.paging(offset);
+			itemsList = service.paging(offset);
 
 		}
 		model.addAttribute("maxPage", maxPage);
-		model.addAttribute("itemList", itemList);
+		model.addAttribute("itemsList", itemsList);
 		return "list";
 	}
 
 	@PostMapping("/selectpage")
-	public String selectPage(Integer num1, Model model) {
+	public String selectPage(Integer page, Model model) {
 		currentPage = 0;
-		currentPage = num1 - 1;
+		currentPage = page - 1;
 		int offset = OUTPUT_NUM * currentPage;
-		List<Items> itemList = service.paging(offset);
+		List<Items> itemsList = service.paging(offset);
 		model.addAttribute("maxPage", maxPage);
-		model.addAttribute("itemList", itemList);
+		model.addAttribute("itemsList", itemsList);
 		return "list";
 	}
 

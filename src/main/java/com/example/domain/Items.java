@@ -22,8 +22,7 @@ public class Items {
 	private Integer shipping;
 	/** 説明 */
 	private String description;
-	/**検索結果の総数*/
-	private Integer count;
+
 
 	/** Getter&Setter */
 	public Integer getId() {
@@ -74,19 +73,13 @@ public class Items {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getCount() {
-		return count;
-	}
-	public void setCount(Integer count) {
-		this.count = count;
-	}
+
 	
 	/** toString */
 	@Override
 	public String toString() {
 		return "Items [id=" + id + ", name=" + name + ", condition=" + condition + ", category=" + category + ", brand="
-				+ brand + ", price=" + price + ", shipping=" + shipping + ", description=" + description + ", count="
-				+ count + "]";
+				+ brand + ", price=" + price + ", shipping=" + shipping + ", description=" + description + "]";
 	}
 	
 

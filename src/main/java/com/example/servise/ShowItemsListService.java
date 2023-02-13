@@ -24,6 +24,8 @@ public class ShowItemsListService {
 		
 		return ItemsList;
 	}
+	
+	
 	public List<Items> paging( int offset) {
 		return repisitory.paging(offset);
 	}
