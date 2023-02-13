@@ -145,12 +145,12 @@
           <form
             class="form-inline"
             method="post"
-            th:action="@{/list/selectpage}"
+            th:action="@{/ShowItemsList/selectpage}"
           >
           <div class="form-group">
             <div class="input-group col-xs-6">
               <label></label>
-             <input name="num1" type="text" class="form-control" />
+             <input name="page" type="text" class="form-control" />
               <!-- 総ページ数 -->
                 <div class="input-group-addon" th:text="${maxPage}">/ 20</div>
             </div>

@@ -43,7 +43,7 @@ public class ItemsRepository {
 	private static final RowMapper<RecordNum> RECORDNUM_ROW_MAPPER = new BeanPropertyRowMapper<>(RecordNum.class);
 
 	/**
-	 * 一覧画面用に必要な情報をテーブル結合して全件取ってくるメソッド.
+	 * 一覧画面用に必要な情報をテーブル結合して30件取ってくるメソッド.
 	 * 
 	 * @return itemsList 商品リスト
 	 */
@@ -56,7 +56,7 @@ public class ItemsRepository {
 	}
 
 	/**
-	 * 商品一覧画面の
+	 * 商品一覧画面のページングを行った際のメソッド
 	 * 
 	 * @param offset
 	 * @return
@@ -70,6 +70,10 @@ public class ItemsRepository {
 
 	}
 
+	/**
+	 * 商品一覧の商品の総数を取ってくるメソッド.
+	 * @return 商品の総数
+	 */
 	public Integer recordNum() {
 		String sql = "SELECT COUNT(id) AS record_num FROM items;";
 		List<RecordNum> recordNumlist = template.query(sql, RECORDNUM_ROW_MAPPER);
