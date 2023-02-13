@@ -116,7 +116,6 @@
         <tbody>
           <tr th:each="item:${itemsList}">
              <td class="item-name">
-              <td class="item-name">
                 <a
                   th:href="@{/detail?id=} + ${item.id}"
                   th:text="${item.name}"

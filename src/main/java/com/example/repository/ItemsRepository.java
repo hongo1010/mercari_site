@@ -42,20 +42,7 @@ public class ItemsRepository {
 	private static final RowMapper<RecordNum> RECORDNUM_ROW_MAPPER = new BeanPropertyRowMapper<>(RecordNum.class);
 
 	/**
-	 * 一覧画面用に必要な情報をテーブル結合して30件取ってくるメソッド.
-	 * 
-	 * @return itemsList 商品リスト
-	 */
-	public List<Items> findAll() {
-		String sql = "SELECT i.name as i_name,i.condition as i_condition,i.price as i_price, c.name_all as c_name_all, i.brand as i_brand FROM Items as i INNER JOIN category AS c ON i.category = c.id ORDER BY category LIMIT 100";
-		List<Items> itemsList = template.query(sql, ITEMS_ROW_MAPPER);
-
-		return itemsList;
-
-	}
-
-	/**
-	 * 商品一覧画面のページングを行った際のメソッド
+	 *一覧画面用に必要な情報をテーブル結合して100件取ってくるメソッド.
 	 * 
 	 * @param offset
 	 * @return

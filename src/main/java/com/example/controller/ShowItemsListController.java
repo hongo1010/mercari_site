@@ -49,12 +49,13 @@ public class ShowItemsListController {
 	 */
 	@RequestMapping("/")
 	public String findAllShowItemsList(Model model) {
+
 		recordNum = repisitory.recordNum();
 		maxPage = recordNum / OUTPUT_NUM;
+		List<Items> itemsList = service.showItemList(0);
+
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);
-		List<Items> itemsList = service.showItemList();
-
 		model.addAttribute("itemsList", itemsList);
 
 		return "list";
@@ -71,22 +72,10 @@ public class ShowItemsListController {
 	public String turnPage(Integer page, Model model) {
 		currentPage += page;
 
-		// 1ページよりも前に戻ろうとすると１ページ目に遷移するようにしているif文
-		if (currentPage <= 0) {
-			currentPage = 0;
-			return "redirect:/ShowItemsList/";
-		}
 		int offset = OUTPUT_NUM * currentPage;
 
-		List<Items> itemsList = service.paging(offset);
+		List<Items> itemsList = service.showItemList(offset);
 
-		// 最後のページ以降に行こうとすると直前のページに戻るようにするif文
-		if (itemsList == null) {
-			currentPage -= 1;
-			offset = OUTPUT_NUM * currentPage;
-			itemsList = service.paging(offset);
-
-		}
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);
@@ -107,10 +96,11 @@ public class ShowItemsListController {
 		if (page < 0 || page > maxPage) {
 			page = 0;
 		}
+
 		currentPage = 0;
 		currentPage = page;
 		int offset = OUTPUT_NUM * currentPage;
-		List<Items> itemsList = service.paging(offset);
+		List<Items> itemsList = service.showItemList(offset);
 
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);

@@ -22,22 +22,10 @@ public class ShowItemsListService {
 	/**
 	 * 商品一覧を画面を表示した際に出てくる商品一覧の情報を検索するメソッド.
 	 * 
-	 * @return 商品一覧
-	 */
-	public List<Items> showItemList() {
-
-		List<Items> ItemsList = repisitory.findAll();
-
-		return ItemsList;
-	}
-
-	/**
-	 * ページ移動した際や、ページから情報を検索する際に使用されるメソッド.
-	 * 
 	 * @param offset
-	 * @return ページングで使用される商品一覧のデータ
+	 * @return １００件の商品一覧のデータ
 	 */
-	public List<Items> paging(int offset) {
+	public List<Items> showItemList(int offset) {
 		return repisitory.paging(offset);
 	}
 }
