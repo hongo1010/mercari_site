@@ -17,11 +17,16 @@ public class ShowItemDetailService {
 
 	@Autowired
 	private ItemsRepository repository;
-	
+
+	/**
+	 * 商品詳細情報を取得するメソッド.
+	 * 
+	 * @param id
+	 * @return 取ってきた商品情報
+	 */
 	public Items showItemsDetail(Integer id) {
-		
+
 		return repository.load(id);
-	} 
-	
-	
+	}
+
 }

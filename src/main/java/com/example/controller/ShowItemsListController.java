@@ -61,6 +61,7 @@ public class ShowItemsListController {
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itemsList", itemsList);
+		session.setAttribute("currentPage", currentPage);
 
 		return "list";
 	}

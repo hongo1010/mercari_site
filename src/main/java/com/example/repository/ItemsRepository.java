@@ -37,12 +37,15 @@ public class ItemsRepository {
 		return items;
 	};
 
-	//商品詳細情報を取ってくる際に必要なItemsクラスのRowMapper
-	private static final RowMapper<Items> DETAILITEMS_ROW_MAPPER = new BeanPropertyRowMapper<>(Items.class);
 	
 	// RecordNumクラスのRowMapper
 	private static final RowMapper<RecordNum> RECORDNUM_ROW_MAPPER = new BeanPropertyRowMapper<>(RecordNum.class);
 
+	
+	//商品詳細情報を取ってくる際に必要なItemsクラスのRowMapper
+	private static final RowMapper<Items> DETAILITEMS_ROW_MAPPER = new BeanPropertyRowMapper<>(Items.class);
+
+	
 	/**
 	 *一覧画面用に必要な情報をテーブル結合して100件取ってくるメソッド.
 	 * 
