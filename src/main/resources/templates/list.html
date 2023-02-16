@@ -136,6 +136,7 @@
       <nav class="page-nav">
         <ul class="pager">
           <li class="previous" th:if="${currentPage >= 1 }"><a th:href="@{/ShowItemsList/next?page=} + ${-1}">&larr; prev</a></li>
+          -<span th:text="${session.currentPage}"></span>-
           <li class="next" th:if="${currentPage < maxPage }"> <a th:href="@{/ShowItemsList/next?page=} + ${+1}">next &rarr;</a></li>
         </ul>
       </nav>
