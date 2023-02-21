@@ -9,11 +9,11 @@ public class Category {
 	/** id */
 	private Integer id;
 	/** parentId */
-	private Integer parentId;
+	private Integer parent;
 	/** カテゴリー名 */
-	private String categoryName;
+	private String name;
 	/** 全ての名前 */
-	private String nameAll;
+	private String name_all;
 
 	/** Getter&Setter */
 
@@ -26,33 +26,33 @@ public class Category {
 	}
 
 	public Integer getParentId() {
-		return parentId;
+		return parent;
 	}
 
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
+	public void setParent(Integer parent) {
+		this.parent = parent;
 	}
 
-	public String getCategoryName() {
-		return categoryName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNameAll() {
-		return nameAll;
+	public String getName_all() {
+		return name_all;
 	}
 
-	public void setNameAll(String nameAll) {
-		this.nameAll = nameAll;
+	public void setName_all(String name_all) {
+		this.name_all = name_all;
 	}
 
 	/** toString */
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", parentId=" + parentId + ", categoryName=" + categoryName + ", nameAll="
-				+ nameAll + "]";
+		return "Category [id=" + id + ", parent=" + parent + ", name=" + name + ", name_all="
+				+ name_all + "]";
 	}
 }
