@@ -25,11 +25,10 @@
     <link rel="stylesheet" href="./mercari.css" />
     <!-- script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"
-    ></script>
+  <!-- script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <title>Rakus Items</title>
   </head>
   <body>
@@ -76,11 +75,10 @@
 
       <!-- edit form -->
       <form
-        action="#"
-        method="POST"
         class="form-horizontal"
         th:action="@{/Edit/update}"
         th:object="${itemsForm}"
+        method="POST"
 
       >
 
@@ -95,7 +93,7 @@
               th:value="${item.name}"
               th:field="*{name}"
             />
-            <span class="text-danger">error:may not be empty</span>
+            <span class="text-danger" th:errors="*{name}">error:may not be empty</span>
           </div>
         </div>
         <!-- price -->
@@ -103,7 +101,7 @@
           <label for="price" class="col-sm-2 control-label">price</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="price" />
-            <span class="text-danger">error:may not be empty</span>
+            <span class="text-danger" th:errors="*{price}">error:may not be empty</span>
           </div>
         </div>
         <!-- category -->
@@ -142,7 +140,7 @@
         <div class="form-group">
           <label for="category" class="col-sm-2 control-label"></label>
           <div class="col-sm-8">
-            <span class="text-danger">error:may not be empty</span>
+            <span class="text-danger" th:errors="*{category}">error:may not be empty</span>
           </div>
         </div>
         <!-- brand -->
@@ -150,7 +148,7 @@
           <label for="brand" class="col-sm-2 control-label">brand</label>
           <div class="col-sm-8">
             <input type="text" id="brand" class="form-control" name="brand" />
-            <span class="text-danger">error:may not be empty</span>
+            <span class="text-danger" th:errors="*{brand}">error:may not be empty</span>
           </div>
         </div>
         <!-- condition -->
@@ -159,7 +157,7 @@
             >condition</label
           >
           <div class="col-sm-8">
-            <label for="condition1" class="radio-inline">
+            <label for="condition1" class="radio-inline" >
               <input type="radio" name="condition" id="condition1" value="1" />
               1
             </label>
@@ -176,7 +174,7 @@
         <div class="form-group">
           <label for="category" class="col-sm-2 control-label"></label>
           <div class="col-sm-8">
-            <span class="text-danger">error:may not be empty</span>
+            <span class="text-danger"  th:errors="*{condition}">error:may not be empty</span>
           </div>
         </div>
         <!-- description -->
@@ -191,7 +189,7 @@
               class="form-control"
               rows="5"
             ></textarea>
-            <span class="text-danger">error:may not be empty</span>
+            <span class="text-danger" th:errors="*{description}" >error:may not be empty</span>
           </div>
         </div>
         <!-- submit button -->
@@ -202,6 +200,7 @@
         </div>
       </form>
     </div>
+     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script th:src="@{/js/SelectBox.js}"></script>
   </body>
 </html>

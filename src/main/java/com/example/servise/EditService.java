@@ -10,7 +10,7 @@ import com.example.repository.ItemsRepository;
 /**
  * 商品編集の商品の読み込み、更新の操作を行うServiceクラス.
  * 
- * @author hongo
+ * @author 
  *
  */
 @Service

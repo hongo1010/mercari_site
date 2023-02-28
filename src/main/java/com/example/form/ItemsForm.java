@@ -5,26 +5,39 @@ import jakarta.validation.constraints.NotBlank;
 /**
  * 商品編集を行う際に使用するform.
  * 
- * @author hongo
+ * @author 
  *
  */
 public class ItemsForm {
 		/** ID */
-	@NotBlank(message="名前は必須です")
 		private Integer id;
+
 		/** 商品名 */
+		@NotBlank(message="error:may not be empty")
 		private String name;
+
 		/** コンディションID */
+		@NotBlank(message="error:may not be empty")
 		private Integer condition;
+		
 		/** カテゴリー */
+		@NotBlank(message="error:may not be empty")
 		private String category;
+		
 		/** ブランド */
+		@NotBlank(message="error:may not be empty")
 		private String brand;
+		
 		/** 価格 */
+		@NotBlank(message="error:may not be empty")
 		private double price;
+		
 		/** 運送 */
+		@NotBlank(message="error:may not be empty")
 		private Integer shipping;
+		
 		/** 説明 */
+		@NotBlank(message="error:may not be empty")
 		private String description;
 
 		/** Getter&Setter */

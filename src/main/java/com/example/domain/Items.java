@@ -3,7 +3,7 @@ package com.example.domain;
 /**
  * Itemsテーブルのドメイン.
  * 
- * @author hongo
+ * @author 
  *
  */
 public class Items {

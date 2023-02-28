@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * 商品一覧画面の操作を行うControllerクラス.
  * 
- * @author hongo
+ * @author 
  *
  */
 @Controller

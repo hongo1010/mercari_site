@@ -9,7 +9,7 @@ import com.example.repository.ItemsRepository;
 /**
  * 商品詳細画面の表示を行うServiceクラス.
  * 
- * @author hongo
+ * @author 
  *
  */
 @Service
