@@ -2,7 +2,7 @@ package com.example.domain;
 
 /**
  * categoryテーブルのドメイン.
- * @author hongo
+ * @author 
  *
  */
 public class Category {

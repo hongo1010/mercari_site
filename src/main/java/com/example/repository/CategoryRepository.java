@@ -15,7 +15,7 @@ import com.example.domain.Category;
 /**
  * Categoryの情報を操作するRepository
  * 
- * @author hongo
+ * @author 
  *
  */
 @Repository

@@ -21,7 +21,7 @@ import com.example.servise.EditService;
 /**
  * 商品編集画面を操作するコントローラー.
  * 
- * @author hongo
+ * @author 
  *
  */
 @Controller

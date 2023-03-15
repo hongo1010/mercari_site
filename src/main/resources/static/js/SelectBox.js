@@ -1,38 +1,51 @@
 "use strict";
-$(function () {
-  $("#bigCategory").change(function () {
-    let id = $("#bigCategory").val();
-    $("#middleCategory > option").remove();
+//document.getElementById("meddleCategory").style.display = "none";
+//document.getElementById("smallCategory").style.display = "none";
 
+$(function () {
+
+  $("#bigCategory").change(function () {
+    let bigCategoryId = document.getElementById('bigCategoryId');
+    let select_value = $('option:selected').val();
+
+    console.log(select_value);
     $.ajax({
-      url: "http://localhost:8080/category/middleCategory",
+      url: "/mercarisite/category/middleCategory",
       type: "POST",
       dataType: "json",
       data: {
-        id: id,
+        id: select_value,
+      },
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_csrf"]').attr('content'),
       },
       async: true,
     }).done(function (middleCategoryList) {
+      console.log(middleCategoryList)
       for (let i = 0; i < middleCategoryList.length; i++) {
+
         $("#middleCategory").append(
           $("<option>")
             .html(middleCategoryList[i].name)
             .val(middleCategoryList[i].id)
         );
       }
+      //Beauty/Bat
     });
   });
 
   $("#middleCategory").change(function () {
-    let id = $("#middleCategory").val();
-    $("#smallCategory > option").remove();
+    let middleCategoryid = $("#middleCategory").val();
 
     $.ajax({
-      url: "http://localhost:8080/category/smallcategory",
+      url: "/mercarisite/category/smallcategory",
       type: "POST",
       dataType: "json",
       data: {
-        id: id,
+        id: middleCategoryid,
+      },
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_csrf"]').attr('content'),
       },
       async: true,
     }).done(function (smallCategoryList) {

@@ -11,7 +11,7 @@ import com.example.repository.ItemsRepository;
 /**
  * 商品一覧の表示、検索を行うserviceクラス.
  * 
- * @author hongo
+ * @author 
  *
  */
 @Service

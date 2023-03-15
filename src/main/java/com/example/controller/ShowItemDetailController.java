@@ -12,7 +12,7 @@ import com.example.servise.ShowItemDetailService;
 /**
  * 商品詳細画面を操作するためのControllerクラス.
  * 
- * @author hongo
+ * @author 
  *
  */
 @Controller

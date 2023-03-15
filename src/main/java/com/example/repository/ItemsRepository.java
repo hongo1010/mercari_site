@@ -15,7 +15,7 @@ import com.example.domain.Items;
 import com.example.domain.RecordNum;
 
 /**
- * @author hongo itemsテーブルの操作を行うリポジトリ.
+ * @author  itemsテーブルの操作を行うリポジトリ.
  *
  */
 @Repository
