@@ -1,6 +1,8 @@
 package com.example.form;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * 商品編集を行う際に使用するform.
@@ -17,7 +19,7 @@ public class ItemsForm {
 		private String name;
 
 		/** コンディションID */
-		@NotBlank(message="error:may not be empty")
+		@NotNull(message="error:may not be empty")
 		private Integer condition;
 		
 		/** カテゴリー */
@@ -29,11 +31,13 @@ public class ItemsForm {
 		private String brand;
 		
 		/** 価格 */
-		@NotBlank(message="error:may not be empty")
+		@NotNull(message="error:may not be empty")
+		@Min(0)
+		
 		private double price;
 		
 		/** 運送 */
-		@NotBlank(message="error:may not be empty")
+//		@NotBlank(message="error:may not be empty")
 		private Integer shipping;
 		
 		/** 説明 */

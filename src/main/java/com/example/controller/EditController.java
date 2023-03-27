@@ -18,10 +18,12 @@ import com.example.form.ItemsForm;
 import com.example.servise.CategoryService;
 import com.example.servise.EditService;
 
+import jakarta.servlet.http.HttpSession;
+
 /**
  * 商品編集画面を操作するコントローラー.
  * 
- * @author 
+ * @author
  *
  */
 @Controller
@@ -32,6 +34,9 @@ public class EditController {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private HttpSession session;
 
 	/**
 	 * 商品編集画面を表示するためのメソッド.
@@ -58,8 +63,11 @@ public class EditController {
 	 * @return
 	 */
 	@PostMapping("/update")
-	public String updateItem(@Validated ItemsForm itemsForm, BindingResult result) {
-
+	public String updateItem(@Validated ItemsForm itemsForm, BindingResult result, Model model,Integer id) {
+		if(result.hasErrors()) {
+			return showEdit(id,model,itemsForm);
+		}
+		
 		Items item = new Items();
 		BeanUtils.copyProperties(itemsForm, item);
 		editService.update(item);

@@ -32,7 +32,6 @@ public class CategoryController {
 	@PostMapping("/middleCategory")
 	public List<Category> middleCategoryList(Integer id, Model model) {
 		List<Category> middleCategoryList = categoryService.middleCategoryList(id);
-		System.out.println("実行されましたaaaaaaaaaaa"+middleCategoryList);
 		return middleCategoryList;
 	}
 
