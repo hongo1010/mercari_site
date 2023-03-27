@@ -116,5 +116,18 @@ public class ItemsRepository {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(item);
 		template.update(sql, param);
 	}
+	
+	/**
+	 * 商品追加を行う際のメソッド.
+	 * 
+	 * @param item
+	 */
+	public void insert(Items item) {
+		String sql = "insert into items(name,condition,category,brand,price,shipping,description) values(:name,:condition,:category,:brand,:price,:shipping,:description);";
+		SqlParameterSource param = new BeanPropertySqlParameterSource(item);
+		template.update(sql, param);
+	}
+	
+	
 
 }

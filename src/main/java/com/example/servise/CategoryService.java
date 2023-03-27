@@ -10,6 +10,11 @@ import com.example.domain.Category;
 import com.example.repository.CategoryRepository;
 
 
+/**
+ * 各カテゴリーの検索を行うServiceクラス.
+ * @author hongo
+ *
+ */
 @Service
 @Transactional
 

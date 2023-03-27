@@ -32,7 +32,6 @@ public class ItemsForm {
 		
 		/** 価格 */
 		@NotNull(message="error:may not be empty")
-		@Min(0)
 		
 		private double price;
 		
