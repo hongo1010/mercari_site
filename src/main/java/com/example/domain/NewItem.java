@@ -1,5 +1,10 @@
 package com.example.domain;
 
+/**
+ * 商品追加をする際のドメイン.
+ * @author hongo
+ *
+ */
 public class NewItem {
 	
 	private Integer id;

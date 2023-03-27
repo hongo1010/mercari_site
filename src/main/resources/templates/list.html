@@ -15,8 +15,10 @@
   <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js}"></script>
   <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <title>Rakus Items</title>
-</head>
+    <title>Rakus Items</title>
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+  </head><title>Rakus Items</title>
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-inverse">
@@ -48,44 +50,60 @@
 
     <!-- 検索フォーム -->
     <div id="forms">
-      <form action="" class="form-inline" role="form">
-        <div class="form-group">
-          <input type="input" class="form-control" id="name" placeholder="item name"/>
-        </div>
-        <div class="form-group"><i class="fa fa-plus"></i></div>
-        <div class="form-group">
-          <select class="form-control">
-            <option>- parentCategory -</option>
-            <option>parentCategory1</option>
-            <option>parentCategory2</option>
-            <option>parentCategory3</option>
-            <option>parentCategory4</option>
-            <option>parentCategory5</option>
-          </select>
-          <select class="form-control">
-            <option>- childCategory -</option>
-            <option>childCategory1</option>
-            <option>childCategory2</option>
-            <option>childCategory3</option>
-            <option>childCategory4</option>
-            <option>childCategory5</option>
-          </select>
-          <select class="form-control">
-            <option>- grandChild -</option>
-            <option>grandChild1</option>
-            <option>grandChild2</option>
-            <option>grandChild3</option>
-            <option>grandChild4</option>
-            <option>grandChild5</option>
-          </select>
-        </div>
-        <div class="form-group"><i class="fa fa-plus"></i></div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="brand"/>
-        </div>
-        <div class="form-group"></div>
-        <button type="submit" class="btn btn-default"><i class="fa fa-angle-double-right"></i> search</button>
-      </form>
+        <form
+          class="form-inline"
+          role="form"
+          th:action="@{/search}"
+          method="POST"
+          th:object="${ItemsearchForm}"
+        >
+          <div class="form-group">
+            <input
+              type="input"
+              class="form-control"
+              id="name"
+              placeholder="item name"
+              name="name"
+            />
+          </div>
+          <div class="form-group"><i class="fa fa-plus"></i></div>
+          <div class="form-group">
+            <select class="form-control" id="bigCategory">
+              <option>BigCategory</option>
+              <option
+                th:each="category : ${bigCategoryList}"
+                th:text="${category.name}"
+                th:value="${category.id}"
+                id="bigCategoryId"
+              >
+                parentCategory1
+              </option>
+            </select>
+            <select
+              class="form-control"
+              id="mediumCategory"
+            >
+              <option value="">MediumCategory</option>
+            </select>
+            <select
+              class="form-control"
+              id="smallCategory"
+            >
+              <option value="">SmallCategory</option>
+            </select>
+          </div>
+          <div class="form-group"><i class="fa fa-plus"></i></div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group"></div>
+          <button type="submit" class="btn btn-default">
+            <i class="fa fa-angle-double-right"></i> search
+          </button>
+        </form>
     </div>
 
     <!-- pagination -->
@@ -162,5 +180,7 @@
       </div>
     </div>
   </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script th:src="@{/js/SelectBox.js}"></script>
 </body>
 </html>
