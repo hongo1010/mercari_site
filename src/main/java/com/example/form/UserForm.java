@@ -2,13 +2,13 @@ package com.example.form;
 
 public class UserForm {
 	
-	private String name;
+	private String username;
 	private String password;
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -18,7 +18,7 @@ public class UserForm {
 	}
 	@Override
 	public String toString() {
-		return "UserForm [name=" + name + ", password=" + password + "]";
+		return "UserForm [username=" + username + ", password=" + password + "]";
 	}
 
 
